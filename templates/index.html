@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Arduino Simulator</title>
+    <style>
+        .led {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: gray;
+            margin: 10px;
+        }
+    </style>
+</head>
+<body>
+
+<h2>Arduino Simulator</h2>
+
+<button onclick="pressButton(true)">Press Button</button>
+<button onclick="pressButton(false)">Release Button</button>
+
+<div id="led" class="led"></div>
+
+<h3>Pin Configuration</h3>
+
+<label>
+  Button Pin:
+  <select id="b_pin" onchange="changePins()">
+    <option value="2" selected>D2</option>
+    <option value="3">D3</option>
+    <option value="4">D4</option>
+    <option value="5">D5</option>
+    <option value="6">D6</option>
+    <option value="7">D7</option>
+    <option value="8">D8</option>
+    <option value="9">D9</option>
+    <option value="10">D10</option>
+    <option value="11">D11</option>
+    <option value="12">D12</option>
+    <option value="13">D13</option>
+  </select>
+</label>
+
+<br><br>
+
+<label>
+  LED Pin:
+  <select id="led_pin" onchange="changePins()">
+    <option value="2">D2</option>
+    <option value="3">D3</option>
+    <option value="4">D4</option>
+    <option value="5">D5</option>
+    <option value="6">D6</option>
+    <option value="7">D7</option>
+    <option value="8">D8</option>
+    <option value="9">D9</option>
+    <option value="10" selected>D10</option>
+    <option value="11">D11</option>
+    <option value="12">D12</option>
+    <option value="13">D13</option>
+  </select>
+</label>
+
+<h3>Generated Arduino Code</h3>
+<pre id="code"></pre>
+
+<script src="/static/main.js"></script>
+</body>
+</html>
