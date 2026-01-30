@@ -40,3 +40,43 @@ The interface is intentionally minimal, as permitted by the task guidelines, to 
 
 ## Project Structure
 
+<<<<<<< HEAD
+```
+.
+├── app.py              # Flask application
+├── simulation.py       # Arduino logic-level simulator & code generator
+├── templates/
+│   └── index.html      # Web UI
+├── static/
+│   └── main.js         # Minimal frontend logic
+└── README.md
+```
+
+---
+
+## How to Run
+
+1. Install Flask:
+   ```bash
+   pip install flask
+   ```
+
+2. Run the application:
+   ```bash
+   python app.py
+   ```
+
+3. Open your browser and go to:
+   ```
+   http://127.0.0.1:5000
+   ```
+
+---
+
+## Simulation Behavior
+
+- Button pressed → GPIO HIGH → LED ON  
+- Button released → GPIO LOW → LED OFF  
+- Changing pin assignments resets the circuit state  
+- Invalid pin configurations disable the simulation and code generation  
+=======
