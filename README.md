@@ -40,7 +40,6 @@ The interface is intentionally minimal, as permitted by the task guidelines, to 
 
 ## Project Structure
 
-<<<<<<< HEAD
 ```
 .
 ├── app.py              # Flask application
@@ -79,4 +78,3 @@ The interface is intentionally minimal, as permitted by the task guidelines, to 
 - Button released → GPIO LOW → LED OFF  
 - Changing pin assignments resets the circuit state  
 - Invalid pin configurations disable the simulation and code generation  
-=======
