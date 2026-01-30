@@ -1,68 +1,137 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Arduino Simulator</title>
+    <meta charset="UTF-8">
+
     <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: rgb(31, 31, 31);
+            color: white;
+        }
+
         .led {
             width: 40px;
             height: 40px;
             border-radius: 50%;
-            background-color: gray;
-            margin: 10px;
+            background-color: rgb(255, 255, 255);
+            margin: 10px 0;
+        }
+
+        .layout {
+            display: flex;
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .leftPanel {
+            width: 50%;
+        }
+
+        .rightPanel {
+            width: 50%;
+            background: rgb(31, 31, 31);
+            padding: 10px;
+            border-left: 2px solid #ddd;
+        }
+
+        pre {
+            background: #111;
+            color: #0f0;
+            padding: 10px;
+            min-height: 275px;
+            overflow-x: auto;
+        }
+
+        button {
+            margin: 10px 10px 10px 0;
         }
     </style>
 </head>
 <body>
+<h1><center>Arduino Simulator</center></h1>
 
-<h2>Arduino Simulator</h2>
+<h3><center>Components</center></h3>
+<div><center>
+    <button onclick="addArduino()">Arduino Uno</button>
+    <button onclick="addLED()">LED</button>
+    <button onclick="addButton()">Push Button</button></center>
+</div>
 
-<button onclick="pressButton(true)">Press Button</button>
-<button onclick="pressButton(false)">Release Button</button>
+<div class="layout">
 
-<div id="led" class="led"></div>
+    <!-- LEFT SIDE -->
+    <div class="leftPanel"><center>
 
-<h3>Pin Configuration</h3>
+        <h3>Workspace</h3>
+        <div id="workspace" style="border:1px solid #ccc; padding:10px;">
+            No components added
+        </div>
 
-<label>
-  Button Pin:
-  <select id="b_pin" onchange="changePins()">
-    <option value="2" selected>D2</option>
-    <option value="3">D3</option>
-    <option value="4">D4</option>
-    <option value="5">D5</option>
-    <option value="6">D6</option>
-    <option value="7">D7</option>
-    <option value="8">D8</option>
-    <option value="9">D9</option>
-    <option value="10">D10</option>
-    <option value="11">D11</option>
-    <option value="12">D12</option>
-    <option value="13">D13</option>
-  </select>
-</label>
+        <div id="simulator" style="display:none; margin-top:20px;">
 
-<br><br>
+            <div id="ledSection" style="display:none;">
+                <h3>LED</h3>
+                <div id="led" class="led"></div>
 
-<label>
-  LED Pin:
-  <select id="led_pin" onchange="changePins()">
-    <option value="2">D2</option>
-    <option value="3">D3</option>
-    <option value="4">D4</option>
-    <option value="5">D5</option>
-    <option value="6">D6</option>
-    <option value="7">D7</option>
-    <option value="8">D8</option>
-    <option value="9">D9</option>
-    <option value="10" selected>D10</option>
-    <option value="11">D11</option>
-    <option value="12">D12</option>
-    <option value="13">D13</option>
-  </select>
-</label>
+                <label>
+                    LED Pin:
+                    <select id="led_pin" onchange="changePins()">
+                        <option value="2">D2</option>
+                        <option value="3">D3</option>
+                        <option value="4">D4</option>
+                        <option value="5">D5</option>
+                        <option value="6">D6</option>
+                        <option value="7">D7</option>
+                        <option value="8">D8</option>
+                        <option value="9">D9</option>
+                        <option value="10" selected>D10</option>
+                        <option value="11">D11</option>
+                        <option value="12">D12</option>
+                        <option value="13">D13</option>
+                    </select>
+                </label>
+            </div>
 
-<h3>Generated Arduino Code</h3>
-<pre id="code"></pre>
+            <div id="buttonSection" style="display:none; margin-top:20px;">
+                <h3>Push Button</h3>
+
+                <label>
+                    Button Pin:
+                    <select id="b_pin" onchange="changePins()">
+                        <option value="2" selected>D2</option>
+                        <option value="3">D3</option>
+                        <option value="4">D4</option>
+                        <option value="5">D5</option>
+                        <option value="6">D6</option>
+                        <option value="7">D7</option>
+                        <option value="8">D8</option>
+                        <option value="9">D9</option>
+                        <option value="10">D10</option>
+                        <option value="11">D11</option>
+                        <option value="12">D12</option>
+                        <option value="13">D13</option>
+                    </select>
+                </label>
+
+                <br><br>
+
+                <button onclick="pressButton(true)">Press Button</button>
+                <button onclick="pressButton(false)">Release Button</button>
+            </div>
+
+        </div></center>
+    </div>
+
+    <!-- RIGHT SIDE -->
+    <div class="rightPanel">
+        <div id="arduinoSection" style="display:none;">
+            <h3><center>Generated Arduino Code</center></h3>
+            <pre id="code">Add LED and Press Button to generate code</pre>
+        </div>
+    </div>
+
+</div>
 
 <script src="/static/main.js"></script>
 </body>

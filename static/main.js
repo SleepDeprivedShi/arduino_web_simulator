@@ -1,3 +1,62 @@
+let arduinoAdded = false;
+let ledAdded = false;
+let buttonAdded = false;
+
+function addArduino() {
+    arduinoAdded = true;
+
+    document.getElementById("simulator").style.display = "block";
+    document.getElementById("arduinoSection").style.display = "block";
+
+    document.getElementById("code").innerText = "Add LED and Press Button to generate code";
+
+    updateWorkspace();
+}
+
+
+
+function addLED() {
+    if (!arduinoAdded) return alert("Add Arduino first");
+    ledAdded = true;
+    document.getElementById("ledSection").style.display = "block";
+    updateWorkspace();
+}
+
+function addButton() {
+    if (!arduinoAdded) return alert("Add Arduino first");
+    buttonAdded = true;
+    document.getElementById("buttonSection").style.display = "block";
+    updateWorkspace();
+}
+
+
+
+function updateWorkspace() {
+    let items = [];
+
+    if (arduinoAdded) items.push("Arduino Uno");
+    if (ledAdded) items.push("LED");
+    if (buttonAdded) items.push("Push Button");
+
+    const workspace = document.getElementById("workspace");
+    const simulator = document.getElementById("simulator");
+
+    if (items.length === 0) {
+        workspace.innerText = "No components added";
+        simulator.style.display = "none";
+        return;
+    }
+
+    workspace.innerText = items.join(", ") + " added";
+
+    if (arduinoAdded && ledAdded && buttonAdded) {
+    simulator.style.display = "block";
+    document.getElementById("arduinoSection").style.display = "block";
+    }
+
+}
+
+
 let lastButtonPin = "2";
 let lastLedPin = "10";
 
@@ -46,7 +105,11 @@ function changePins() {
 
         updateLED(false);
 
+        if (arduinoAdded && ledAdded && buttonAdded && data.code) {
         showCode(data.code);
+        }   
+
+
     });
 }
 
